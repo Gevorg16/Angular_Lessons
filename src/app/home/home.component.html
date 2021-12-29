@@ -1,0 +1,28 @@
+<p>home works!</p>
+<ul>
+    <li *ngFor = 'let item of data'>
+        {{item}}
+    </li>
+</ul>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Actions</th>
+    </tr>
+    <tr *ngFor = "let item of users,let i = index,let last = last">
+<td>{{item.id}}</td>
+<td>{{item.firstName}}</td>
+<td>{{item.lastName}}</td>
+<td>{{item.email}}</td>
+<td>{{item?.phone}}</td>
+<th><button (click)='view(item,i,last)'>View</button></th>
+<th><button (click)='delete(i)'>Delete</button></th>
+    </tr>
+</table>
+
+<p *ngIf = 'index%2==0'>Text</p>
