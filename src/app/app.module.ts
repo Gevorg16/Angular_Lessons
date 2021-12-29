@@ -8,6 +8,8 @@ import { Route, RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { FormsComponent } from './forms/forms.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const route: Routes = [
   {
@@ -25,6 +27,10 @@ component:AboutComponent
   {
     path: '**',
     component: NotFoundComponent
+  },
+  {
+path: 'form',
+component: FormsComponent
   }
 ]
 
@@ -35,11 +41,13 @@ component:AboutComponent
     FooterComponent,
     HomeComponent,
     AboutComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    FormsComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(route)
+    RouterModule.forRoot(route),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

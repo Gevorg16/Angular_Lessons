@@ -1,0 +1,7 @@
+input.ng-dirty.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+input.ng-untouched.ng-valid.ng-pristine{
+    border: 1px solid green;
+}
+/* kashxati menak isRequiredi vra */
