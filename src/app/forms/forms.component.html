@@ -1,24 +1,46 @@
+<img style="width: 150px; height: 100px;" src="assets/images/download.jpeg" alt="">
 <form [formGroup]='form' (ngSubmit)='send()'>
 <label >First Name</label>
 <div>
     <input type="text" formControlName='first_name'>
+    <div *ngIf ="form.get('first_name')?.hasError('required') && (form.get('first_name')?.touched || form.get('first_name')?.dirty)">
+        First name is required.
+    </div>
 </div>
 <label for="last_name">Last Name</label>
 <div>
     <input type="text" id="last_name" formControlName = 'last_name'>
+    <div *ngIf ="form.get('last_name')?.hasError('minlength') && (form.get('last_name')?.touched || form.get('last_name')?.dirty)">
+        Last name must be minimum 6 symbols.
+    </div>
+    <div *ngIf ="form.get('last_name')?.hasError('maxlength') && (form.get('last_name')?.touched || form.get('last_name')?.dirty)">
+        Last name must be maximum 20 symbols.
+    </div>
 </div>
 <label for="email">Email</label>
 <div>
     <input type="email" id="email" formControlName = 'email'>
+    <div *ngIf ="form.get('last_name')?.hasError('required') && (form.get('last_name')?.touched || form.get('last_name')?.dirty)">
+        Email is required.
+    </div>
 </div>
 <label for="age">Age</label>
 <div>
     <input type="number" formControlName='age' id="age">
+    <div *ngIf ="form.get('number')?.hasError('min') && (form.get('number')?.touched || form.get('number')?.dirty)">
+        Age must to be minimum 18.
+    </div>
+    <div *ngIf ="form.get('number')?.hasError('max') && (form.get('number')?.touched || form.get('number')?.dirty)">
+        Age must to be maximum 99.
+    </div>
 </div>
 <label for="phone">Phone</label>
 <div>
     <input type="tel" id="phone" formControlName ='phone'>
+    <div *ngIf ="form.get('phone')?.hasError('pattern') && (form.get('phone')?.touched || form.get('phone')?.dirty)">
+        Phone is required
+    </div>
 </div>
-<button [disabled]='form.invalid'>Send</button>
+<button [disabled] = 'form.invalid'>Send</button>
 <button type="button" (click)='resetForm()'>Reset</button>
 </form>

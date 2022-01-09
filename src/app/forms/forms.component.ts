@@ -9,11 +9,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class FormsComponent implements OnInit {
 
   form = new FormGroup({
-first_name: new FormControl ('', Validators.required),
-last_name: new FormControl (''),
-email: new FormControl ('', Validators.required),
-age: new FormControl (''),
-phone: new FormControl ('')
+first_name: new FormControl ('', [Validators.required, /*Validators.pattern(/^[a-z]{1,}$/)*/]),
+last_name: new FormControl ('', [Validators.minLength(6), Validators.maxLength(20)]),
+email: new FormControl ('', [Validators.required, Validators.email]),
+age: new FormControl ('', [Validators.min(18), Validators.max(99)]),
+phone: new FormControl ('', [Validators.required, Validators.pattern(/^[0-9]{5,}$/)])
   })
 
   constructor() { }
@@ -34,6 +34,10 @@ phone: new FormControl ('')
   send(){
     console.log(this.form)//.valid
     // this.resetForm()
+    // console.log(this.form.get('email')?.valid)
+    // console.log(this.form.get('email')?.dirty)
+    console.log(this.form.get('email')?.hasError('required'))
+    // console.log(this.form.get('email')?.touched)
   }
 
   resetForm(){
