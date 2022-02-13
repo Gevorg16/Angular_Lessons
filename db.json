@@ -1,0 +1,36 @@
+{
+  "people": [
+    {
+      "firstName": "James",
+      "lastName": "Smith",
+      "gender": "male",
+      "age": 50,
+      "number": "5678568567",
+      "id": "2"
+    },
+    {
+      "id": "3",
+      "firstName": "Emily",
+      "lastName": "Jones",
+      "gender": "female",
+      "age": 24,
+      "number": "456754675"
+    },
+    {
+      "firstName": "John",
+      "lastName": "Jackson",
+      "gender": "male",
+      "age": 21,
+      "number": 58584654,
+      "id": "V5OV_T5"
+    },
+    {
+      "firstName": "Mike",
+      "lastName": "Smith",
+      "gender": "male",
+      "age": 50,
+      "number": "5678568567",
+      "id": "noPtCaY"
+    }
+  ]
+}

@@ -1,9 +1,16 @@
 <p>home works!</p>
 <ul>
-    <li *ngFor = 'let item of data'>
-        {{item}}
+    <li *ngFor = 'let item of data let last = last let first = first let odd = odd'>
+        <span>{{item}}</span>
+        <span [ngStyle] = "{backgroundColor: last ? 'blue' : 'pink'}">last {{last}};</span>
+        <span [ngStyle] = "{backgroundColor: 'orange'}">first {{first}};</span>
+        <span [ngClass] = "['bg-color','font-size']">odd {{odd}};</span>
+        <span [ngClass] = "odd ? 'bg-red' : 'bg-green'">odd {{odd}};</span>
     </li>
 </ul>
+
+<div [innerHTML] = "html"></div>
+<div [innerText] = "html"></div>
 
 <table>
     <tr>
@@ -25,4 +32,69 @@
     </tr>
 </table>
 
+
+
 <p *ngIf = 'index%2==0'>Text</p>
+
+<br><br>
+
+<table>
+    <tr>
+        <th>First Name:</th>
+        <th>Last Name:</th>
+        <th>Gender:</th>
+        <th>Age:</th>
+        <th>Phone Number:</th>
+        <th>Action:</th>
+    </tr>
+    <tr *ngFor = "let item of response">
+        <td>{{item.firstName}}</td>
+        <td>{{item.lastName}}</td>
+        <td>{{item.gender}}</td>
+        <td>{{item.age}}</td>
+        <td>{{item.number}}</td>
+        <td><button (click) = 'deleteItem(item.id)'>Delete</button></td>
+        <td><button (click) = 'editItem(item)'>Edit</button></td>
+    </tr>
+</table>
+
+<br><br>
+
+<form [formGroup] = 'form' (ngSubmit)="send()">
+    <div>
+        <label for="firstName">First Name</label>
+        <div>
+            <input appTrim type="text"  id="firstName" formControlName="firstName">
+        </div>
+    </div>
+    <div>
+        <label for="lastName">Last Name</label>
+        <div>
+            <input type="text"  id="lastrName" formControlName="lastName">
+        </div>
+    </div>
+    <div>
+        <label for="age">Age</label>
+        <div>
+            <input type="number"  id="age" formControlName="age">
+        </div>
+    </div>
+    <div>
+        <label for="number">Phone Number</label>
+        <div>
+            <input type="number"  id="number" formControlName="number">
+        </div>
+    </div>
+    <div>
+        <label appChangeStyle for="male">Male</label>
+        <input type="radio"  id="male" formControlName="gender" value="male">
+        <label for="female">Female</label>
+        <input type="radio"  id="female" formControlName="gender" value="female">
+    </div>
+    <button [disabled] = "form.invalid">Save</button>
+</form>
+<br>
+<button (click) = "child.clickMe()">Hahahaha</button>
+<p #p_el>Textt</p>
+
+<app-home-child #child [data] = "users" test = "'text'" (event) = "toParent($event)"></app-home-child>

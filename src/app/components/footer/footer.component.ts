@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
+  date = new Date()
+
+  text = "This is a text"
+
+  textForTrim = "        This is a random text       "
+
   constructor() { }
 
   ngOnInit(): void {

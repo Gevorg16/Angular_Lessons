@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-forms',
@@ -8,15 +8,23 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class FormsComponent implements OnInit {
 
-  form = new FormGroup({
-first_name: new FormControl ('', [Validators.required, /*Validators.pattern(/^[a-z]{1,}$/)*/]),
-last_name: new FormControl ('', [Validators.minLength(6), Validators.maxLength(20)]),
-email: new FormControl ('', [Validators.required, Validators.email]),
-age: new FormControl ('', [Validators.min(18), Validators.max(99)]),
-phone: new FormControl ('', [Validators.required, Validators.pattern(/^[0-9]{5,}$/)])
-  })
+//   form = new FormGroup({
+// first_name: new FormControl ('', [Validators.required, /*Validators.pattern(/^[a-z]{1,}$/)*/]),
+// last_name: new FormControl ('', [Validators.minLength(6), Validators.maxLength(20)]),
+// email: new FormControl ('', [Validators.required, Validators.email]),
+// age: new FormControl ('', [Validators.min(18), Validators.max(99)]),
+// phone: new FormControl ('', [Validators.required, Validators.pattern(/^[0-9]{5,}$/)])
+//   })
 
-  constructor() { }
+  form = this.fb.group({
+    first_name: ['', Validators.required],
+    last_name: ['', [Validators.required,Validators.minLength(6), Validators.maxLength(20)]],
+    email: ['', [Validators.required, Validators.email]],
+    age: ['', [Validators.min(18), Validators.max(99)]],
+    phone: ['', [Validators.required, Validators.pattern(/^[0-9]{5,}$/)]]
+  });
+
+  constructor(public fb: FormBuilder) { }
 
   ngOnInit(): void {
     // this.form.setValue({

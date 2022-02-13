@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
+  show = true
+  parrentValue: any = 'Parrent component value'
   constructor() { }
 
   ngOnInit(): void {

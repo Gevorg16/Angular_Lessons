@@ -1,1 +1,5 @@
 <p>about works!</p>
+<!-- <app-header [tvyal] = "'hello'"></app-header> -->
+<button (click) = "show = !show">Show child component</button>
+<input type="text" #val (change) = "parrentValue = val.value">
+<app-about-child *ngIf = "show" [value] = "parrentValue"></app-about-child>
